@@ -1,0 +1,20 @@
+version: '3.0'
+services:
+  ocserv:
+    build: .
+    restart: always
+    container_name: ocserv
+    privileged: true
+    hostname: ocuk.toggl.ir
+    ports:
+      - 4442:443/udp
+      - 4442:443
+    #    volumes:
+    #      - "/opt/ocserv:/etc/ocserv"
+    environment:
+      - CA_CN=VPN CA
+      - CA_ORG=Big Corp
+      - CA_DAYS=9999
+      - SRV_CN=ocuk.toggl.ir
+      - SRV_ORG=Toggl
+      - SRV_DAYS=9999
